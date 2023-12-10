@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #third party
+    'crispy_forms',
+    'crispy_bootstrap4',
+
     #my apps
     'accounts',
     'pages',
@@ -129,9 +133,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#auth settings
+#authentication settings
 AUTH_USER_MODEL = 'accounts.CustomUser'
-
-#login and logout redirect
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+#crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
