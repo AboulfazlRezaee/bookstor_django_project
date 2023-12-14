@@ -1,7 +1,7 @@
 {% extends '_base.html' %}
 
 {% block page_title %}
-    ایجاد کتاب
+    ویرایش کتاب {{ book.title }}
 {% endblock %}
 
 
@@ -10,7 +10,7 @@
     <form action="" method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit" class="btn btn-primary">ایجاد</button>
+        <button type="submit" class="btn btn-primary">ذخیره</button>
     </form>
     <br>
     <a href="{% url 'book_list' %}">برگشت به لیست کتاب‌ها</a>
