@@ -12,6 +12,7 @@
     <p>{{book.author}}</p>
     <h4>{{book.price}}</h4>
     <a href="{% url 'book_update' book.id %}" class="btn btn-primary">ویرایش</a>
+    <a href="{% url 'book_delete' book.id %}" class="btn btn-danger">حذف</a>
     <br>
     
     <a href="{% url 'book_list' %}">برگشت به لیست کتاب‌ها</a>
