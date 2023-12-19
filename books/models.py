@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -11,10 +12,18 @@ class Book(models.Model):
     cover = models.ImageField(upload_to='covers/', blank=True)
     status = models.BooleanField(default=False)
 
-
     def __str__(self):
         return f"{self.author} : {self.title}"
     
-    #get absolute url
     def get_absolute_url(self):
         return reverse('book_detail', args=[str(self.id)])
+    
+
+class Comment(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    text = models.TextField()
+    datetime_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user} : {self.text}'
