@@ -11,6 +11,8 @@ class BookListView(generic.ListView):
     paginate_by = 4
     template_name = 'books/book_list.html'
     context_object_name = 'books'
+    def get_queryset(self):
+        return Book.objects.filter(status=True)
 
 class BookDetailView(generic.DetailView):
     model = Book
@@ -19,7 +21,7 @@ class BookDetailView(generic.DetailView):
 class BookCreateView(generic.CreateView):
     model = Book
     template_name = 'books/book_create.html'
-    fields = ['title', 'author', 'description', 'price', 'cover',]
+    fields = ['title', 'author', 'description', ]
 
 class BookUpdateView(generic.UpdateView):
     model = Book
